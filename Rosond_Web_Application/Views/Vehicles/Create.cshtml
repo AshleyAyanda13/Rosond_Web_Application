@@ -1,4 +1,4 @@
-﻿@model Rosond_Web_Application.Models.Vehicle
+@model Rosond_Web_Application.Models.Vehicle
 
 @{
     ViewBag.Title = "Add Vehicle Record";
@@ -17,7 +17,7 @@
         <div class="form-group">
          Make
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Make, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Make, new { htmlAttributes = new { @class = "form-control", placeholder="e.g BMW" } })
                 @Html.ValidationMessageFor(model => model.Make, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -25,7 +25,7 @@
         <div class="form-group">
  Model
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Model, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Model, new { htmlAttributes = new { @class = "form-control" , placeholder="e.g 3 Series"} })
                 @Html.ValidationMessageFor(model => model.Model, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -33,7 +33,7 @@
         <div class="form-group">
            Licence Plate
             <div class="col-md-10">
-                @Html.EditorFor(model => model.LicensePlate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.LicensePlate, new { htmlAttributes = new { @class = "form-control", placeholder="e.g AA34RRGP" } })
                 @Html.ValidationMessageFor(model => model.LicensePlate, "", new { @class = "text-danger" })
             </div>
         </div>
