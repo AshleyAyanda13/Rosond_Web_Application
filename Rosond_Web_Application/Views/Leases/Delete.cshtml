@@ -1,0 +1,72 @@
+﻿@model Rosond_Web_Application.Models.Lease
+
+@{
+    ViewBag.Title = "Delete A record";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Lease</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           Company Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client.CompanyName)
+        </dd>
+
+        <dt>
+          Driver
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Driver.FullName)
+        </dd>
+
+        <dt>
+            Vehicle
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vehicle.Make)
+        </dd>
+
+        <dt>
+          Lease Start Date
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LeaseStartDate)
+        </dd>
+
+        <dt>
+          Lease End Date
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LeaseEndDate)
+        </dd>
+
+        <dt>
+           Lease Amount
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LeaseAmount)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

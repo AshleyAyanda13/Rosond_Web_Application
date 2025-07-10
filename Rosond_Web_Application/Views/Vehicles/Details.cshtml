@@ -1,0 +1,82 @@
+﻿@model Rosond_Web_Application.Models.Vehicle
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Vehicle</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Branch Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Branch.BranchName)
+        </dd>
+
+        <dt>
+           Company Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client.CompanyName)
+        </dd>
+
+        <dt>
+           Driver Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Driver.FullName)
+        </dd>
+
+        <dt>
+         Supplier Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Supplier.Name)
+        </dd>
+
+        <dt>
+         Make
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Make)
+        </dd>
+
+        <dt>
+           Model
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Model)
+        </dd>
+
+        <dt>
+           License Plate
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LicensePlate)
+        </dd>
+
+        <dt>
+         Year
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Year)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.VehicleId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Rosond_Web_Application.Models.Vehicle>
+
+@{
+    ViewBag.Title = "Vehicle Records";
+}
+
+<h2>Vehicle Records</h2>
+
+<!-- Alert messages -->
+@if (TempData["DeleteMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["DeleteMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+@if (TempData["EditMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["EditMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+@if (TempData["DeleteError"] != null)
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        @TempData["DeleteError"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success mb-3" })
+</p>
+
+
+<div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover">
+        <thead class="table-light">
+            <tr>
+                <th>Branch</th>
+                <th>Company</th>
+                <th>Driver</th>
+                <th>Supplier</th>
+                <th>Make</th>
+                <th>Model</th>
+                <th>License</th>
+                <th>Year</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Branch.BranchName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Client.CompanyName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Driver.FullName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Supplier.Name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Make)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Model)</td>
+                    <td>@Html.DisplayFor(modelItem => item.LicensePlate)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Year)</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.VehicleId }, new { @class = "btn btn-sm btn-outline-primary" }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.VehicleId }, new { @class = "btn btn-sm btn-outline-info" }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.VehicleId }, new { @class = "btn btn-sm btn-outline-danger" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

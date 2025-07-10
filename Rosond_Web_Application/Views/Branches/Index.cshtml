@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Rosond_Web_Application.Models.Branch>
+
+@{
+    ViewBag.Title = "Branch Records";
+}
+
+<h2>Branch Records</h2>
+
+@if (TempData["DeleteMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["DeleteMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+@if (TempData["EditMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["EditMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+@if (TempData["DeleteError"] != null)
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        @TempData["DeleteError"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success mb-3" })
+</p>
+
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover table-striped">
+        <thead class="table-light">
+            <tr>
+                <th>Branch Name</th>
+                <th>Location</th>
+                <th>Manager Name</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.BranchName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Location)</td>
+                    <td>@Html.DisplayFor(modelItem => item.ManagerName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.BranchId }, new { @class = "btn btn-sm btn-outline-primary" }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.BranchId }, new { @class = "btn btn-sm btn-outline-info" }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.BranchId }, new { @class = "btn btn-sm btn-outline-danger" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

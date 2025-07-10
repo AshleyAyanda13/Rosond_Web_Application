@@ -1,0 +1,73 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model  IEnumerable<Rosond_Web_Application.Models.Lease>
+
+@{
+    ViewBag.Title = "Search Results Leases ";
+}
+
+<h2>Browse Leases</h2>
+
+@if (Model.Count() == 0)
+{
+
+    <h1>No Results found</h1>
+
+
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Client</th>
+                <th>Driver</th>
+                <th>Vehicle Make</th>
+                <th>License Plate</th>
+                <th>Supplier</th>
+                <th>Branch</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Client.CompanyName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Driver.FullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Vehicle.Make)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LeaseStartDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LeaseEndDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LeaseAmount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Vehicle.Supplier.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Vehicle.Branch.BranchName)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.LeaseId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.LeaseId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.LeaseId })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @Html.ActionLink("Back to List", "Index")
+}
+
+
+

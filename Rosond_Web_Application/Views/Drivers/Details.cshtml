@@ -1,0 +1,50 @@
+﻿@model Rosond_Web_Application.Models.Driver
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Driver</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Full Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+
+        <dt>
+            License Number
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LicenseNumber)
+        </dd>
+
+        <dt>
+           Phone Number
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+
+        <dt>
+            Email
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DriverId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Rosond_Web_Application.Models.ReportRow>
+
+@{
+    ViewBag.Title = "Vehicle Manufacturer Allocation Summary";
+}
+
+<h2>Report</h2>
+
+<!-- Responsive Table Wrapper -->
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover">
+        <thead class="table-light">
+            <tr>
+                <th>Group</th>
+                <th>Category</th>
+                <th>Manufacturer</th>
+                <th>Vehicle Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Group</td>
+                    <td>@item.Category</td>
+                    <td>@item.Manufacturer</td>
+                    <td>@item.Count</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

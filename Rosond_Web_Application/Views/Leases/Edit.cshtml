@@ -1,0 +1,86 @@
+﻿@model Rosond_Web_Application.Models.Lease
+
+@{
+    ViewBag.Title = "Edit Lease Records";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Lease</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.LeaseId)
+
+    <div class="form-group">
+       Lease Start Date
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.LeaseStartDate, "{0:yyyy-MM-ddTHH:mm}", new
+            {
+                @type = "datetime-local",
+                @class = "form-control"
+            })
+            @Html.ValidationMessageFor(model => model.LeaseStartDate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+Lease End Date
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.LeaseEndDate, "{0:yyyy-MM-ddTHH:mm}", new
+            {
+                @type = "datetime-local",
+                @class = "form-control"
+            })
+            @Html.ValidationMessageFor(model => model.LeaseEndDate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+       Lease Amount
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.LeaseAmount, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.LeaseAmount, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+       Vehicle
+        <div class="col-md-10">
+            @Html.DropDownList("VehicleId", null, "-- Select Vehicle --", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.VehicleId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+      Client
+        <div class="col-md-10">
+            @Html.DropDownList("ClientId", null, "-- Select Client --", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ClientId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+Driver
+        <div class="col-md-10">
+            @Html.DropDownList("DriverId", null, "-- Select Driver --", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.DriverId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

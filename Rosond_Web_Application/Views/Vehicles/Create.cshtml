@@ -1,0 +1,109 @@
+﻿@model Rosond_Web_Application.Models.Vehicle
+
+@{
+    ViewBag.Title = "Add Vehicle Record";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Vehicle</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+         Make
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Make, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Make, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+ Model
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Model, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Model, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+           Licence Plate
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LicensePlate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LicensePlate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            Year
+            <div class="col-md-10">
+                @{
+                    int currentYear = DateTime.Now.Year;
+                    int startYear = 1994;
+                }
+
+              
+                    
+                <select id="Year" name="Year" class="form-control">
+                    <option value="">Select Year</option> 
+                    @for (int year = startYear; year <= currentYear + 1; year++)
+                    {
+                        <option value="@year" @(year == Model.Year ? "selected" : "")>@year</option>
+                    }
+                </select>
+                    @Html.ValidationMessageFor(model => model.Year, "", new { @class = "text-danger" })
+              
+
+            </div>
+        </div>
+
+        <div class="form-group">
+Supplier
+            <div class="col-md-10">
+                @Html.DropDownList("SupplierId", null, "-- Select Supplier --", new { @class = "form-control" }) 
+                @Html.ValidationMessageFor(model => model.SupplierId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+          Branch
+            <div class="col-md-10">
+              
+                @Html.DropDownList("BranchId", null, "-- Select Branch --", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.BranchId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+          Client
+            <div class="col-md-10">
+               
+                @Html.DropDownList("ClientId", null, "-- Select Client --", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ClientId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+           Driver
+            <div class="col-md-10">
+
+                @Html.DropDownList("DriverId", null, "-- Select Driver --", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DriverId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

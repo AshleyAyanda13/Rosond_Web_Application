@@ -1,0 +1,66 @@
+﻿@model Rosond_Web_Application.Models.Lease
+
+@{
+    ViewBag.Title = " More Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Lease</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Client.CompanyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client.CompanyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Driver.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Driver.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vehicle.Make)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vehicle.Make)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LeaseStartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LeaseStartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LeaseEndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LeaseEndDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LeaseAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LeaseAmount)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.LeaseId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
